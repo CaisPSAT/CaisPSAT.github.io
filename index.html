@@ -1,14 +1,28 @@
-<!-- index.html -->
-
-<div id="title-screen" class="screen">
-    <h1>Title Screen</h1>
-    <button class="button" onclick="showQuestionScreen()">Start</button>
-</div>
-
-<div id="question-screen" class="screen hidden">
-    <h1>Question Screen</h1>
-    <!-- Question content and elements -->
-</div>
-
-<!-- JavaScript to toggle screens -->
-<script src="script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSAT Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="title-screen" class="screen active">
+        <h1>PSAT Practice</h1>
+        <button class="button" id="start-button">Start</button>
+    </div>
+    <div id="question-screen" class="screen hidden">
+        <h1>Question Screen</h1>
+        <div id="question-container">
+            <div id="question1">Question 1</div>
+            <div id="question2">Question 2</div>
+        </div>
+        <button class="button" id="show-answer-button">Show Answer</button>
+        <div id="answer-container" class="hidden">
+            <p id="answer">Answer goes here...</p>
+            <p id="explanation">Explanation goes here...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
