@@ -82,4 +82,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('subscribe-five').addEventListener('click', function() {
         alert('Subscribed to 5 extra sets daily for $4.99/month!');
-        // Implement
+        // Implement your payment logic here
+    });
+
+    document.getElementById('subscribe-ten').addEventListener('click', function() {
+        alert('Subscribed to 10 extra sets daily for $9.99/month!');
+        // Implement your payment logic here
+    });
+
+    // Countdown timer function
+    function startCountdown(seconds) {
+        let remainingTime = seconds;
+        const interval = setInterval(() => {
+            if (remainingTime <= 0) {
+                clearInterval(interval);
+                countdownTimer.textContent = "00:00:00";
+            } else {
+                remainingTime--;
+                const hours = Math.floor(remainingTime / 3600);
+                const minutes = Math.floor((remainingTime % 3600) / 60);
+                const seconds = remainingTime % 60;
+                countdownTimer.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+        }, 1000);
+    }
+});
