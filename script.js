@@ -20,21 +20,53 @@ const questions = [
     // Add more questions as needed
 ];
 
+// Function to get the current date in CST
+function getCSTDate() {
+    const now = new Date();
+    const utcOffset = now.getTimezoneOffset() * 60000;
+    const utcTime = now.getTime() + utcOffset;
+    const cstOffset = -6 * 3600000; // CST is UTC-6
+    return new Date(utcTime + cstOffset);
+}
+
+// Function to generate a seed based on the current date in CST
+function getDailySeed() {
+    const date = getCSTDate();
+    return date.toISOString().split('T')[0]; // YYYY-MM-DD format
+}
+
+// Function to get today's question index based on the daily seed
+function getTodayQuestionIndex(seed) {
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+        hash = seed.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return Math.abs(hash) % questions.length;
+}
+
+// Function to get today's question
+function getTodayQuestion() {
+    const seed = getDailySeed();
+    const questionIndex = getTodayQuestionIndex(seed);
+    return questions[questionIndex];
+}
+
+// Event listener for the start button
 document.getElementById('start-button').addEventListener('click', function() {
     // Hide title screen and show question screen
     document.getElementById('title-screen').classList.add('hidden');
     document.getElementById('question-screen').classList.remove('hidden');
 
-    // Select a random question
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    const randomQuestion = questions[randomIndex];
+    // Get today's question
+    const todayQuestion = getTodayQuestion();
 
     // Display the question
-    document.getElementById('question').textContent = randomQuestion.question;
-    document.getElementById('answer').textContent = randomQuestion.answer;
-    document.getElementById('explanation').textContent = randomQuestion.explanation;
+    document.getElementById('question').textContent = todayQuestion.question;
+    document.getElementById('answer').textContent = todayQuestion.answer;
+    document.getElementById('explanation').textContent = todayQuestion.explanation;
 });
 
+// Event listener for the show answer button
 document.getElementById('show-answer-button').addEventListener('click', function() {
     const answerContainer = document.getElementById('answer-container');
     if (answerContainer.classList.contains('hidden')) {
