@@ -1,18 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSAT Practice Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="title-screen" class="screen">
+    <h1>PSAT Practice</h1>
+    <button id="start-button" class="button">Start Practice</button>
+</div>
+
 <div id="question-screen" class="screen hidden">
     <h1>Question Screen</h1>
     <div class="spinner-container">
         <div class="spinner-section">
             <h2>Reading & Writing Questions</h2>
-            <div class="spinner" id="reading-spinner">
-                <!-- Reading & Writing questions will be here -->
-            </div>
+            <div class="spinner" id="reading-spinner"></div>
             <button class="button spin-button" id="reading-spin-button">Spin</button>
         </div>
         <div class="spinner-section">
             <h2>Math Questions</h2>
-            <div class="spinner" id="math-spinner">
-                <!-- Math questions will be here -->
-            </div>
+            <div class="spinner" id="math-spinner"></div>
             <button class="button spin-button" id="math-spin-button">Spin</button>
         </div>
     </div>
@@ -27,3 +38,7 @@
         </div>
     </div>
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>
