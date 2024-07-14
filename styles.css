@@ -139,13 +139,32 @@ body {
 }
 
 .answer {
+    display: flex;
+    align-items: center;
     font-size: 16px;
     padding: 10px;
     background-color: #fff; /* White background */
     border: 1px solid #ccc; /* Gray border */
     border-radius: 5px; /* Rounded corners */
     width: 80%; /* Width of answer choices */
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Margin between answers */
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: lightgray; /* Default color */
+}
+
+.dot.correct {
+    background-color: green; /* Color for correct answer */
+}
+
+.dot.incorrect {
+    background-color: red; /* Color for incorrect answer */
 }
 
 .explanation {
@@ -170,11 +189,11 @@ body {
     cursor: pointer;
 }
 
-.expand-button svg {
+.expand-button img {
     fill: #007bff; /* Blue color for arrow */
     transition: transform 0.3s ease; /* Smooth transition for arrow rotation */
 }
 
-.expand-button:hover svg {
+.expand-button:hover img {
     transform: rotate(180deg); /* Rotate arrow on hover */
 }
