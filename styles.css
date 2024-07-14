@@ -103,12 +103,13 @@ body {
 .box-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: right;
     margin-bottom: 10px;
 }
 
 .box-header h2 {
     font-size: 24px;
+    align-items: right;
 }
 
 .box-line {
