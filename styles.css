@@ -69,6 +69,10 @@ body {
 /* Countdown container */
 #countdown-container {
     margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #countdown-title {
@@ -177,4 +181,33 @@ body {
 
 .expand-button:hover svg {
     transform: rotate(180deg); /* Rotate arrow on hover */
+}
+
+.expanded {
+    width: 100%; /* Expand to full width */
+}
+
+.expanded .box-line {
+    width: 100%; /* Line stretches to full width */
+}
+
+.expanded .question-text {
+    text-align: left; /* Align question text to left */
+}
+
+.expanded .answers,
+.expanded .explanation {
+    filter: none; /* Remove blur effect on answers and explanation */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .box-container {
+        flex-direction: column; /* Stack boxes on smaller screens */
+    }
+
+    .question-box {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
 }
