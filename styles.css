@@ -1,24 +1,20 @@
 /* styles.css */
 
-/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Screen styles */
 .screen {
     width: 80%;
     max-width: 600px;
@@ -28,18 +24,7 @@ body {
     background-color: #fff;
     border-radius: 10px;
     text-align: center;
-}
-
-/* Title screen specific styles */
-#title-screen {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-/* Question screen specific styles */
-#question-screen {
-    background-color: #fff;
-    color: #333;
+    display: none; /* Initially hidden */
 }
 
 .hidden {
@@ -66,17 +51,17 @@ body {
 .spinner-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .spinner-section {
-    width: calc(50% - 20px); /* Adjusted width to ensure proper spacing */
-    padding: 10px;
+    width: calc(50% - 20px); /* Adjusted width */
     text-align: center;
 }
 
 .spinner {
     border: 2px solid #ccc;
-    height: 200px; /* Increased height for better visibility */
+    height: 200px; /* Adjusted height */
     overflow: hidden;
     margin: 10px auto;
     position: relative;
