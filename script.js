@@ -51,19 +51,21 @@ function getTodayQuestion() {
     return questions[questionIndex];
 }
 
+// Function to update the question on the screen
+function updateQuestion() {
+    const todayQuestion = getTodayQuestion();
+    document.getElementById('question').textContent = todayQuestion.question;
+    document.getElementById('answer').textContent = todayQuestion.answer;
+    document.getElementById('explanation').textContent = todayQuestion.explanation;
+}
+
 // Event listener for the start button
 document.getElementById('start-button').addEventListener('click', function() {
     // Hide title screen and show question screen
     document.getElementById('title-screen').classList.add('hidden');
     document.getElementById('question-screen').classList.remove('hidden');
-
-    // Get today's question
-    const todayQuestion = getTodayQuestion();
-
-    // Display the question
-    document.getElementById('question').textContent = todayQuestion.question;
-    document.getElementById('answer').textContent = todayQuestion.answer;
-    document.getElementById('explanation').textContent = todayQuestion.explanation;
+    // Update the question
+    updateQuestion();
 });
 
 // Event listener for the show answer button
@@ -77,3 +79,17 @@ document.getElementById('show-answer-button').addEventListener('click', function
         this.textContent = 'Show Answer';
     }
 });
+
+// Function to check if it's midnight
+function checkMidnight() {
+    const now = new Date();
+    if (now.getHours() === 0 && now.getMinutes() === 0) {
+        location.reload(); // Reload the page at midnight
+    }
+}
+
+// Set interval to check the time every minute
+setInterval(checkMidnight, 60000);
+
+// Initial question update when the script loads
+updateQuestion();
