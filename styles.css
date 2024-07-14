@@ -9,8 +9,8 @@
 
 /* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light gray background for the body */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light gray background for the body */
     color: #333; /* Dark text color */
     display: flex;
     justify-content: center;
@@ -20,12 +20,14 @@ body {
 
 /* Screen styles */
 .screen {
-    width: 80%; /* Adjust width as needed */
+    width: 80%;
     max-width: 600px; /* Max width to maintain readability */
     border: 1px solid #ccc; /* Gray border */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
     padding: 20px; /* Padding inside the screen */
-    transition: background-color 0.3s ease; /* Smooth background color transition */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
 }
 
 /* Title screen specific styles */
@@ -36,8 +38,8 @@ body {
 
 /* Question screen specific styles */
 #question-screen {
-    background-color: #ffd54f; /* Amber background */
-    color: #000; /* Black text color */
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
 }
 
 /* Hidden class for hiding elements */
@@ -49,7 +51,7 @@ body {
 .button {
     display: inline-block;
     padding: 10px 20px;
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: #007bff; /* Blue button color */
     color: #fff; /* White text color */
     border: none;
@@ -65,4 +67,24 @@ body {
 
 /* Question and answer container styles */
 #question-container {
-    margin-bottom
+    margin-bottom: 20px;
+}
+
+#answer-container {
+    margin-top: 20px;
+    text-align: left; /* Align text to the left */
+}
+
+/* Additional styles for readability */
+h1 {
+    margin-bottom: 20px; /* Add space below headings */
+}
+
+p {
+    margin-bottom: 10px; /* Add space below paragraphs */
+}
+
+#explanation {
+    margin-top: 10px; /* Add space above explanation */
+    font-style: italic; /* Italicize explanation */
+}
