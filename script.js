@@ -19,7 +19,7 @@ function updateQuestionText(category) {
     const questionBox = document.getElementById(`${category}-box`);
     questionBox.querySelector('.question-text').textContent = questions[category].question;
 
-    const answers = questionBox.querySelectorAll('.answer');
+    const answers = questionBox.querySelectorAll('.answer p');
     answers.forEach((answer, index) => {
         answer.textContent = questions[category].answers[index];
     });
@@ -75,3 +75,51 @@ function updateCountdown() {
 
 updateCountdown(); // Start countdown
 
+// New code for handling answer selection, checking, and revealing
+document.addEventListener('DOMContentLoaded', function() {
+    const answers = document.querySelectorAll('.answer');
+    const explanation = document.querySelector('.explanation');
+    const checkButton = document.querySelector('.check-button');
+    const revealButton = document.querySelector('.reveal-button');
+
+    answers.forEach(answer => {
+        answer.addEventListener('click', function() {
+            // Remove selected class from all answers
+            answers.forEach(a => a.classList.remove('selected'));
+            // Add selected class to the clicked answer
+            answer.classList.add('selected');
+        });
+    });
+
+    checkButton.addEventListener('click', function() {
+        answers.forEach(answer => {
+            const dot = answer.querySelector('.dot');
+            if (answer.classList.contains('selected')) {
+                if (answer.id === 'answer1') {
+                    dot.classList.add('correct');
+                } else {
+                    dot.classList.add('incorrect');
+                }
+            }
+        });
+
+        // Show explanation if correct answer is selected
+        if (document.querySelector('.selected') && document.querySelector('.selected').id === 'answer1') {
+            explanation.style.filter = 'none'; // Remove blur
+        }
+    });
+
+    revealButton.addEventListener('click', function() {
+        answers.forEach(answer => {
+            const dot = answer.querySelector('.dot');
+            if (answer.id === 'answer1') {
+                dot.classList.add('correct');
+            } else {
+                dot.classList.add('incorrect');
+            }
+        });
+
+        // Show explanation for all answers
+        explanation.style.filter = 'none'; // Remove blur
+    });
+});
