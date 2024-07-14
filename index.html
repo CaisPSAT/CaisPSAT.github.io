@@ -1,48 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily PSAT Question</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div id="title-screen" class="screen active">
-            <h1>Daily PSAT Question</h1>
-            <button id="start-btn">Start</button>
-        </div>
-        <div id="question-screen" class="screen hidden">
-            <button id="spin-btn">Get Today's Questions</button>
-            <div id="question-display" class="question-display hidden">
-                <h2 id="question-text"></h2>
-                <button id="show-answer-btn" class="hidden">Show Answer and Explanation</button>
-                <div id="answer-display" class="hidden">
-                    <p id="answer-text"></p>
-                    <button id="hide-answer-btn">Hide Answer and Explanation</button>
-                </div>
-                <button id="next-questions-btn" class="hidden">Next Questions</button>
-            </div>
-        </div>
-        <div id="purchase-screen" class="screen hidden">
-            <h2>Get More Questions</h2>
-            <div id="timer-display">
-                <p>Next questions available in: <span id="countdown-timer">00:00:00</span></p>
-            </div>
-            <div class="purchase-options">
-                <div class="purchase-option">
-                    <h3>One-time Purchase</h3>
-                    <button id="buy-one-extra">Buy 1 Extra Set - $0.99</button>
-                    <button id="buy-five-extra">Buy 5 Extra Sets - $4.99</button>
-                </div>
-                <div class="purchase-option">
-                    <h3>Subscription</h3>
-                    <button id="subscribe-five">5 Extra Sets Daily - $4.99/month</button>
-                    <button id="subscribe-ten">10 Extra Sets Daily - $9.99/month</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+<!-- index.html -->
+
+<div id="title-screen" class="screen active">
+    <h1>Title Screen</h1>
+    <button class="button" onclick="showQuestionScreen()">Start</button>
+</div>
+
+<div id="question-screen" class="screen hidden">
+    <h1>Question Screen</h1>
+    <!-- Question content and elements -->
+</div>
+
+<!-- JavaScript to toggle screens -->
+<script src="script.js"></script>
