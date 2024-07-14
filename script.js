@@ -1,120 +1,77 @@
 // script.js
 
-// Array of questions, answers, and explanations
-const questions = [
-    {
-        category: "reading-writing",
-        question: "Question 1 for Reading & Writing",
-        answer: "Answer 1 for Reading & Writing",
-        explanation: "Explanation 1 for Reading & Writing"
+// Mock data for questions (replace with your actual questions)
+const questions = {
+    'reading-writing': {
+        question: 'Sample Reading & Writing Question?',
+        answers: ['Answer A', 'Answer B', 'Answer C', 'Answer D'],
+        explanation: 'Explanation for the sample question.'
     },
-    {
-        category: "reading-writing",
-        question: "Question 2 for Reading & Writing",
-        answer: "Answer 2 for Reading & Writing",
-        explanation: "Explanation 2 for Reading & Writing"
-    },
-    {
-        category: "reading-writing",
-        question: "Question 3 for Reading & Writing",
-        answer: "Answer 3 for Reading & Writing",
-        explanation: "Explanation 3 for Reading & Writing"
-    },
-    {
-        category: "reading-writing",
-        question: "Question 4 for Reading & Writing",
-        answer: "Answer 4 for Reading & Writing",
-        explanation: "Explanation 4 for Reading & Writing"
-    },
-    {
-        category: "reading-writing",
-        question: "Question 5 for Reading & Writing",
-        answer: "Answer 5 for Reading & Writing",
-        explanation: "Explanation 5 for Reading & Writing"
-    },
-    {
-        category: "math",
-        question: "Question 1 for Math",
-        answer: "Answer 1 for Math",
-        explanation: "Explanation 1 for Math"
-    },
-    {
-        category: "math",
-        question: "Question 2 for Math",
-        answer: "Answer 2 for Math",
-        explanation: "Explanation 2 for Math"
-    },
-    {
-        category: "math",
-        question: "Question 3 for Math",
-        answer: "Answer 3 for Math",
-        explanation: "Explanation 3 for Math"
-    },
-    {
-        category: "math",
-        question: "Question 4 for Math",
-        answer: "Answer 4 for Math",
-        explanation: "Explanation 4 for Math"
-    },
-    {
-        category: "math",
-        question: "Question 5 for Math",
-        answer: "Answer 5 for Math",
-        explanation: "Explanation 5 for Math"
+    'math': {
+        question: 'Sample Math Question?',
+        answers: ['Answer A', 'Answer B', 'Answer C', 'Answer D'],
+        explanation: 'Explanation for the sample question.'
     }
-    // Add more questions as needed
-];
+};
 
-// Function to shuffle questions array
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+// Update question text in the boxes
+function updateQuestionText(category) {
+    const questionBox = document.getElementById(`${category}-box`);
+    questionBox.querySelector('.question-text').textContent = questions[category].question;
 
-// Function to update question list in HTML
-function updateQuestionList(category) {
-    const questionList = document.getElementById(`${category}-questions`);
-    questionList.innerHTML = ''; // Clear existing questions
-
-    // Filter questions by category
-    const filteredQuestions = questions.filter(q => q.category === category);
-
-    // Shuffle filtered questions
-    shuffle(filteredQuestions);
-
-    // Display first 5 questions
-    const visibleQuestions = filteredQuestions.slice(0, 5);
-
-    // Create HTML for questions
-    visibleQuestions.forEach(question => {
-        const li = document.createElement('li');
-        li.textContent = question.question;
-        questionList.appendChild(li);
+    const answers = questionBox.querySelectorAll('.answer');
+    answers.forEach((answer, index) => {
+        answer.textContent = questions[category].answers[index];
     });
+
+    const explanation = questionBox.querySelector('.explanation');
+    explanation.textContent = questions[category].explanation;
 }
 
-// Event listener for the start button
-document.getElementById('start-button').addEventListener('click', function() {
-    // Hide title screen and show question screen
+// Event listener for Begin button
+document.getElementById('begin-button').addEventListener('click', function() {
     document.getElementById('title-screen').classList.add('hidden');
     document.getElementById('question-screen').classList.remove('hidden');
-    // Update question lists
-    updateQuestionList('reading-writing');
-    updateQuestionList('math');
+    updateQuestionText('reading-writing');
+    updateQuestionText('math');
 });
 
-// Event listener for the reading-writing spin button
-document.getElementById('reading-writing-spin').addEventListener('click', function() {
-    const questionList = document.getElementById('reading-writing-questions');
-    questionList.classList.add('spin-down'); // Apply spinning animation
-    this.classList.add('hidden'); // Hide the spin button
+// Event listener for expanding Reading & Writing box
+document.getElementById('expand-reading-writing').addEventListener('click', function() {
+    document.getElementById('math-box').classList.add('hidden');
+    document.getElementById('reading-writing-box').classList.add('expanded');
 });
 
-// Event listener for the math spin button
-document.getElementById('math-spin').addEventListener('click', function() {
-    const questionList = document.getElementById('math-questions');
-    questionList.classList.add('spin-down'); // Apply spinning animation
-    this.classList.add('hidden'); // Hide the spin button
+// Event listener for expanding Math box
+document.getElementById('expand-math').addEventListener('click', function() {
+    document.getElementById('reading-writing-box').classList.add('hidden');
+    document.getElementById('math-box').classList.add('expanded');
 });
+
+// Event listener for collapsing Reading & Writing box
+document.getElementById('reading-writing-box').addEventListener('click', function() {
+    this.classList.remove('expanded');
+    document.getElementById('math-box').classList.remove('hidden');
+});
+
+// Event listener for collapsing Math box
+document.getElementById('math-box').addEventListener('click', function() {
+    this.classList.remove('expanded');
+    document.getElementById('reading-writing-box').classList.remove('hidden');
+});
+
+// Countdown timer for next set of questions
+function updateCountdown() {
+    const now = new Date();
+    const hoursLeft = 24 - now.getHours();
+    const minutesLeft = 60 - now.getMinutes();
+    const secondsLeft = 60 - now.getSeconds();
+
+    const countdown = document.getElementById('countdown');
+    countdown.textContent = `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
+
+    setTimeout(updateCountdown, 1000); // Update every second
+}
+
+updateCountdown(); // Start countdown
+
