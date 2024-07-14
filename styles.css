@@ -1,11 +1,13 @@
 /* styles.css */
 
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -16,6 +18,7 @@ body {
     height: 100vh;
 }
 
+/* Screen styles */
 .screen {
     width: 80%;
     max-width: 600px;
@@ -27,11 +30,13 @@ body {
     text-align: center;
 }
 
+/* Title screen specific styles */
 #title-screen {
     background-color: #f0f0f0;
     color: #333;
 }
 
+/* Question screen specific styles */
 #question-screen {
     background-color: #fff;
     color: #333;
@@ -64,14 +69,16 @@ body {
 }
 
 .spinner-section {
-    width: 45%;
+    width: calc(50% - 20px); /* Adjusted width to ensure proper spacing */
+    padding: 10px;
+    text-align: center;
 }
 
 .spinner {
     border: 2px solid #ccc;
-    height: 150px;
+    height: 200px; /* Increased height for better visibility */
     overflow: hidden;
-    margin: 10px 0;
+    margin: 10px auto;
     position: relative;
     background-color: #fff;
     border-radius: 5px;
@@ -85,8 +92,8 @@ body {
 }
 
 @keyframes spin {
-    0% { top: -150px; }
-    100% { top: 150px; }
+    0% { top: -200px; } /* Adjusted top position */
+    100% { top: 200px; } /* Adjusted bottom position */
 }
 
 #final-question-container {
