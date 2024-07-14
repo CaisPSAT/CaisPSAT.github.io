@@ -1,42 +1,59 @@
 /* styles.css */
 
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light gray background for the body */
+    color: #333; /* Dark text color */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
 }
 
+/* Screen styles */
 .screen {
     width: 80%;
-    max-width: 600px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    text-align: center;
-    display: none; /* Initially hidden */
+    max-width: 600px; /* Max width to maintain readability */
+    border: 1px solid #ccc; /* Gray border */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px; /* Padding inside the screen */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
 }
 
+/* Title screen specific styles */
+#title-screen {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark text color */
+}
+
+/* Question screen specific styles */
+#question-screen {
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+}
+
+/* Hidden class for hiding elements */
 .hidden {
     display: none;
 }
 
+/* Button styles */
 .button {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -44,69 +61,74 @@ body {
 }
 
 .button:hover {
-    background-color: #0056b3;
-    transform: scale(1.1);
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-.spinner-container {
+/* Question spinner styles */
+.question-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 20px;
 }
 
-.spinner-section {
-    width: calc(50% - 20px); /* Adjusted width */
-    text-align: center;
+.question-spinner {
+    width: 40%;
+    padding: 20px;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
 }
 
-.spinner {
-    border: 2px solid #ccc;
-    height: 200px; /* Adjusted height */
-    overflow: hidden;
-    margin: 10px auto;
-    position: relative;
-    background-color: #fff;
+.question-spinner h2 {
+    margin-bottom: 10px;
+}
+
+.question-list {
+    list-style-type: none; /* Remove bullet points */
+    overflow: hidden; /* Hide overflow */
+    height: 200px; /* Fixed height for visible questions */
+    margin-bottom: 10px; /* Space below question list */
+    padding: 0;
+}
+
+.question-list li {
+    margin-bottom: 10px; /* Space between questions */
+    padding: 10px;
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.spin-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.spinner div {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    animation: spin 3s ease-in-out infinite;
+.spin-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
+/* Animation for spinning effect */
 @keyframes spin {
-    0% { top: -200px; } /* Adjusted top position */
-    100% { top: 200px; } /* Adjusted bottom position */
+    from {
+        transform: rotateX(0);
+    }
+    to {
+        transform: rotateX(360deg);
+    }
 }
 
-#final-question-container {
-    margin-top: 20px;
-}
-
-#question-container {
-    margin-bottom: 20px;
-}
-
-#answer-container {
-    margin-top: 20px;
-    text-align: left;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-h2 {
-    margin-bottom: 10px;
-}
-
-p {
-    margin-bottom: 10px;
-}
-
-#explanation {
-    margin-top: 10px;
-    font-style: italic;
+.question-list.spin-down {
+    animation: spin 2s ease-in-out;
+    animation-fill-mode: forwards; /* Keep the last keyframe */
 }
