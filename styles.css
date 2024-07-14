@@ -1,59 +1,52 @@
 /* styles.css */
 
-/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4; /* Light gray background for the body */
-    color: #333; /* Dark text color */
+    background-color: #f4f4f4;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
 }
 
-/* Screen styles */
 .screen {
     width: 80%;
-    max-width: 600px; /* Max width to maintain readability */
-    border: 1px solid #ccc; /* Gray border */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    padding: 20px; /* Padding inside the screen */
-    background-color: #fff; /* White background */
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center text */
+    max-width: 600px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
 }
 
-/* Title screen specific styles */
 #title-screen {
-    background-color: #f0f0f0; /* Light gray background */
-    color: #333; /* Dark text color */
+    background-color: #f0f0f0;
+    color: #333;
 }
 
-/* Question screen specific styles */
 #question-screen {
-    background-color: #fff; /* White background */
-    color: #333; /* Dark text color */
+    background-color: #fff;
+    color: #333;
 }
 
-/* Hidden class for hiding elements */
 .hidden {
     display: none;
 }
 
-/* Button styles */
 .button {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #007bff; /* Blue button color */
-    color: #fff; /* White text color */
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -61,30 +54,67 @@ body {
 }
 
 .button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
-/* Question and answer container styles */
+.spinner-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.spinner-section {
+    width: 45%;
+}
+
+.spinner {
+    border: 2px solid #ccc;
+    height: 150px;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.spinner div {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    animation: spin 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { top: -150px; }
+    100% { top: 150px; }
+}
+
+#final-question-container {
+    margin-top: 20px;
+}
+
 #question-container {
     margin-bottom: 20px;
 }
 
 #answer-container {
     margin-top: 20px;
-    text-align: left; /* Align text to the left */
+    text-align: left;
 }
 
-/* Additional styles for readability */
 h1 {
-    margin-bottom: 20px; /* Add space below headings */
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
 }
 
 p {
-    margin-bottom: 10px; /* Add space below paragraphs */
+    margin-bottom: 10px;
 }
 
 #explanation {
-    margin-top: 10px; /* Add space above explanation */
-    font-style: italic; /* Italicize explanation */
+    margin-top: 10px;
+    font-style: italic;
 }
