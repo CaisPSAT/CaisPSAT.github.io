@@ -1,10 +1,27 @@
 /* styles.css */
 
-/* Common screen styles */
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray background for the body */
+    color: #333; /* Dark text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Screen styles */
 .screen {
     width: 80%; /* Adjust width as needed */
     max-width: 600px; /* Max width to maintain readability */
-    background-color: #fff; /* White background for screens */
     border: 1px solid #ccc; /* Gray border */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
     padding: 20px; /* Padding inside the screen */
@@ -20,10 +37,28 @@
 /* Question screen specific styles */
 #question-screen {
     background-color: #ffd54f; /* Amber background */
-    color: #333; /* Dark text color */
+    color: #000; /* Black text color */
 }
 
 /* Hidden class for hiding elements */
 .hidden {
     display: none;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
