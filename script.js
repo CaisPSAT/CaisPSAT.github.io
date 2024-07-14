@@ -1,87 +1,120 @@
 // script.js
 
-document.getElementById('start-button').addEventListener('click', function() {
-    document.getElementById('title-screen').style.display = 'none';
-    document.getElementById('question-screen').style.display = 'block';
-});
-
-document.getElementById('reading-spin-button').addEventListener('click', function() {
-    this.style.display = 'none';
-    spinSpinner('reading-spinner', readingQuestions, selectedQuestion => {
-        if (selectedMathQuestion) {
-            showFinalQuestion(selectedQuestion, selectedMathQuestion);
-        } else {
-            selectedReadingQuestion = selectedQuestion;
-        }
-    });
-});
-
-document.getElementById('math-spin-button').addEventListener('click', function() {
-    this.style.display = 'none';
-    spinSpinner('math-spinner', mathQuestions, selectedQuestion => {
-        if (selectedReadingQuestion) {
-            showFinalQuestion(selectedReadingQuestion, selectedQuestion);
-        } else {
-            selectedMathQuestion = selectedQuestion;
-        }
-    });
-});
-
-document.getElementById('show-answer-button').addEventListener('click', function() {
-    const answerContainer = document.getElementById('answer-container');
-    if (answerContainer.classList.contains('hidden')) {
-        answerContainer.classList.remove('hidden');
-        this.textContent = 'Hide Answer';
-    } else {
-        answerContainer.classList.add('hidden');
-        this.textContent = 'Show Answer';
+// Array of questions, answers, and explanations
+const questions = [
+    {
+        category: "reading-writing",
+        question: "Question 1 for Reading & Writing",
+        answer: "Answer 1 for Reading & Writing",
+        explanation: "Explanation 1 for Reading & Writing"
+    },
+    {
+        category: "reading-writing",
+        question: "Question 2 for Reading & Writing",
+        answer: "Answer 2 for Reading & Writing",
+        explanation: "Explanation 2 for Reading & Writing"
+    },
+    {
+        category: "reading-writing",
+        question: "Question 3 for Reading & Writing",
+        answer: "Answer 3 for Reading & Writing",
+        explanation: "Explanation 3 for Reading & Writing"
+    },
+    {
+        category: "reading-writing",
+        question: "Question 4 for Reading & Writing",
+        answer: "Answer 4 for Reading & Writing",
+        explanation: "Explanation 4 for Reading & Writing"
+    },
+    {
+        category: "reading-writing",
+        question: "Question 5 for Reading & Writing",
+        answer: "Answer 5 for Reading & Writing",
+        explanation: "Explanation 5 for Reading & Writing"
+    },
+    {
+        category: "math",
+        question: "Question 1 for Math",
+        answer: "Answer 1 for Math",
+        explanation: "Explanation 1 for Math"
+    },
+    {
+        category: "math",
+        question: "Question 2 for Math",
+        answer: "Answer 2 for Math",
+        explanation: "Explanation 2 for Math"
+    },
+    {
+        category: "math",
+        question: "Question 3 for Math",
+        answer: "Answer 3 for Math",
+        explanation: "Explanation 3 for Math"
+    },
+    {
+        category: "math",
+        question: "Question 4 for Math",
+        answer: "Answer 4 for Math",
+        explanation: "Explanation 4 for Math"
+    },
+    {
+        category: "math",
+        question: "Question 5 for Math",
+        answer: "Answer 5 for Math",
+        explanation: "Explanation 5 for Math"
     }
-});
+    // Add more questions as needed
+];
 
-function spinSpinner(spinnerId, questions, callback) {
-    const spinner = document.getElementById(spinnerId);
-    spinner.innerHTML = '';
-    shuffleArray(questions);
-    questions.slice(0, 5).forEach(q => {
-        const div = document.createElement('div');
-        div.textContent = q.question;
-        spinner.appendChild(div);
-    });
-}
-
-function showFinalQuestion(readingQuestion, mathQuestion) {
-    const finalQuestionContainer = document.getElementById('final-question-container');
-    document.getElementById('question').textContent = `Reading: ${readingQuestion.question}\nMath: ${mathQuestion.question}`;
-    document.getElementById('answer').textContent = `Reading Answer: ${readingQuestion.answer}\nMath Answer: ${mathQuestion.answer}`;
-    document.getElementById('explanation').textContent = `Reading Explanation: ${readingQuestion.explanation}\nMath Explanation: ${mathQuestion.explanation}`;
-    finalQuestionContainer.classList.remove('hidden');
-}
-
-function shuffleArray(array) {
+// Function to shuffle questions array
+function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-// Array of questions, answers, and explanations
-let selectedReadingQuestion, selectedMathQuestion;
-const readingQuestions = [
-    { question: "What is 2 + 2?", answer: "4", explanation: "Adding 2 and 2 results in 4." },
-    { question: "What is the capital of France?", answer: "Paris", explanation: "The capital of France is Paris." },
-    { question: "Who wrote 'Romeo and Juliet'?", answer: "William Shakespeare", explanation: "William Shakespeare wrote 'Romeo and Juliet'." },
-    { question: "What is the area of a square with side length 4?", answer: "16", explanation: "The area of a square is side length squared, so 4 squared is 16." },
-    { question: "What is 20 divided by 4?", answer: "5", explanation: "Dividing 20 by 4 results in 5." }
-    // Add more reading questions as needed
-];
+// Function to update question list in HTML
+function updateQuestionList(category) {
+    const questionList = document.getElementById(`${category}-questions`);
+    questionList.innerHTML = ''; // Clear existing questions
 
-const mathQuestions = [
-    { question: "What is 3 x 5?", answer: "15", explanation: "Multiplying 3 and 5 results in 15." },
-    { question: "What is the square root of 25?", answer: "5", explanation: "The square root of 25 is 5." },
-    { question: "What is 10 - 3?", answer: "7", explanation: "Subtracting 3 from 10 results in 7." },
-    { question: "What is the circumference of a circle with radius 3?", answer: "6π", explanation: "The circumference of a circle is calculated using the formula 2πr, where r is the radius." },
-    { question: "What is 8 ÷ 2?", answer: "4", explanation: "Dividing 8 by 2 results in 4." }
-    // Add more math questions as needed
-];
+    // Filter questions by category
+    const filteredQuestions = questions.filter(q => q.category === category);
 
-// Add event listeners or other code as needed for additional functionality
+    // Shuffle filtered questions
+    shuffle(filteredQuestions);
+
+    // Display first 5 questions
+    const visibleQuestions = filteredQuestions.slice(0, 5);
+
+    // Create HTML for questions
+    visibleQuestions.forEach(question => {
+        const li = document.createElement('li');
+        li.textContent = question.question;
+        questionList.appendChild(li);
+    });
+}
+
+// Event listener for the start button
+document.getElementById('start-button').addEventListener('click', function() {
+    // Hide title screen and show question screen
+    document.getElementById('title-screen').classList.add('hidden');
+    document.getElementById('question-screen').classList.remove('hidden');
+    // Update question lists
+    updateQuestionList('reading-writing');
+    updateQuestionList('math');
+});
+
+// Event listener for the reading-writing spin button
+document.getElementById('reading-writing-spin').addEventListener('click', function() {
+    const questionList = document.getElementById('reading-writing-questions');
+    questionList.classList.add('spin-down'); // Apply spinning animation
+    this.classList.add('hidden'); // Hide the spin button
+});
+
+// Event listener for the math spin button
+document.getElementById('math-spin').addEventListener('click', function() {
+    const questionList = document.getElementById('math-questions');
+    questionList.classList.add('spin-down'); // Apply spinning animation
+    this.classList.add('hidden'); // Hide the spin button
+});
