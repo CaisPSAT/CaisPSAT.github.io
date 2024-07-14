@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const titleScreen = document.getElementById('title-screen');
     const questionScreen = document.getElementById('question-screen');
-    const purchaseScreen = document.getElementById('purchase-screen');
     const questionDisplay = document.getElementById('question-display');
     const answerDisplay = document.getElementById('answer-display');
-    const countdownTimer = document.getElementById('countdown-timer');
-
+    const questionText = document.getElementById('question-text');
+    const answerText = document.getElementById('answer-text');
+    
     // Manually input your questions here
     const mathQuestions = [
         { question: "What is 2 + 2?", answer: "The answer is 4.", explanation: "Basic addition." },
@@ -48,14 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const dailyReadingQuestion = getDailyQuestion(readingQuestions);
 
         questionText.textContent = `${dailyMathQuestion.question}\n\n${dailyReadingQuestion.question}`;
-        answerText.textContent = `${dailyMathQuestion.answer} - ${dailyMathQuestion.explanation}\n\n${dailyReadingQuestion.answer} - ${dailyReadingQuestion.explanation}`;
+        showAnswerBtn.classList.remove('hidden');
 
         questionDisplay.classList.remove('hidden');
     });
 
     showAnswerBtn.addEventListener('click', function() {
+        const dailyMathQuestion = getDailyQuestion(mathQuestions);
+        const dailyReadingQuestion = getDailyQuestion(readingQuestions);
+
+        answerText.textContent = `${dailyMathQuestion.answer} - ${dailyMathQuestion.explanation}\n\n${dailyReadingQuestion.answer} - ${dailyReadingQuestion.explanation}`;
         answerDisplay.classList.remove('hidden');
         showAnswerBtn.classList.add('hidden');
+        nextQuestionsBtn.classList.remove('hidden');
     });
 
     hideAnswerBtn.addEventListener('click', function() {
@@ -65,45 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     nextQuestionsBtn.addEventListener('click', function() {
         questionScreen.classList.add('hidden');
-        purchaseScreen.classList.remove('hidden');
-        startCountdown(86400); // 24 hours in seconds
+        // You can add additional functionality here if needed
     });
-
-    // Event listeners for purchase buttons
-    document.getElementById('buy-one-extra').addEventListener('click', function() {
-        alert('Purchased 1 extra set of questions for $0.99!');
-        // Implement your payment logic here
-    });
-
-    document.getElementById('buy-five-extra').addEventListener('click', function() {
-        alert('Purchased 5 extra sets of questions for $4.99!');
-        // Implement your payment logic here
-    });
-
-    document.getElementById('subscribe-five').addEventListener('click', function() {
-        alert('Subscribed to 5 extra sets daily for $4.99/month!');
-        // Implement your payment logic here
-    });
-
-    document.getElementById('subscribe-ten').addEventListener('click', function() {
-        alert('Subscribed to 10 extra sets daily for $9.99/month!');
-        // Implement your payment logic here
-    });
-
-    // Countdown timer function
-    function startCountdown(seconds) {
-        let remainingTime = seconds;
-        const interval = setInterval(() => {
-            if (remainingTime <= 0) {
-                clearInterval(interval);
-                countdownTimer.textContent = "00:00:00";
-            } else {
-                remainingTime--;
-                const hours = Math.floor(remainingTime / 3600);
-                const minutes = Math.floor((remainingTime % 3600) / 60);
-                const seconds = remainingTime % 60;
-                countdownTimer.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }
-        }, 1000);
-    }
 });
