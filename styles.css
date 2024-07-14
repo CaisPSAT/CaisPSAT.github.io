@@ -35,16 +35,40 @@ body {
 #title-screen {
     background-color: #f0f0f0; /* Light gray background */
     color: #333; /* Dark text color */
-    padding-bottom: 60px; /* Space for countdown timer */
+}
+
+/* Question screen specific styles */
+#question-screen {
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+}
+
+/* Hidden class for hiding elements */
+.hidden {
+    display: none;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
 /* Countdown container */
 #countdown-container {
-    position: absolute;
-    bottom: 20px; /* Distance from bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; /* Full width */
+    margin-top: 20px;
 }
 
 #countdown-title {
@@ -153,33 +177,4 @@ body {
 
 .expand-button:hover svg {
     transform: rotate(180deg); /* Rotate arrow on hover */
-}
-
-.expanded {
-    width: 100%; /* Expand to full width */
-}
-
-.expanded .box-line {
-    width: 100%; /* Line stretches to full width */
-}
-
-.expanded .question-text {
-    text-align: left; /* Align question text to left */
-}
-
-.expanded .answers,
-.expanded .explanation {
-    filter: none; /* Remove blur effect on answers and explanation */
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .box-container {
-        flex-direction: column; /* Stack boxes on smaller screens */
-    }
-
-    .question-box {
-        width: 100%; /* Full width on smaller screens */
-        margin-bottom: 20px;
-    }
 }
