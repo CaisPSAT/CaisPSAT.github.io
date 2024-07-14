@@ -14,13 +14,31 @@
 
     <div id="question-screen" class="screen hidden">
         <h1>Question Screen</h1>
-        <div id="question-container">
-            <div id="question">Question will appear here</div>
+        <div class="spinner-container">
+            <div class="spinner-section">
+                <h2>Reading & Writing Questions</h2>
+                <div class="spinner" id="reading-spinner">
+                    <!-- Reading & Writing questions will be here -->
+                </div>
+                <button class="button spin-button" id="reading-spin-button">Spin</button>
+            </div>
+            <div class="spinner-section">
+                <h2>Math Questions</h2>
+                <div class="spinner" id="math-spinner">
+                    <!-- Math questions will be here -->
+                </div>
+                <button class="button spin-button" id="math-spin-button">Spin</button>
+            </div>
         </div>
-        <button class="button" id="show-answer-button">Show Answer</button>
-        <div id="answer-container" class="hidden">
-            <p id="answer">Answer goes here...</p>
-            <p id="explanation">Explanation goes here...</p>
+        <div id="final-question-container" class="hidden">
+            <div id="question-container">
+                <div id="question">Question will appear here</div>
+            </div>
+            <button class="button" id="show-answer-button">Show Answer</button>
+            <div id="answer-container" class="hidden">
+                <p id="answer">Answer goes here...</p>
+                <p id="explanation">Explanation goes here...</p>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
