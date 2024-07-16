@@ -174,7 +174,7 @@ body {
     border: 1px solid #ccc; /* Gray border */
     border-radius: 5px; /* Rounded corners */
     width: 80%; /* Width of explanation */
-    filter: blur(2px); /* Initially blurred */
+    filter: blur(5px); /* Initially blurred */
     position: absolute;
     bottom: 20px;
     left: 50%;
