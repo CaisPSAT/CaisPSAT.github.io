@@ -68,7 +68,7 @@ function updateCountdown() {
     const secondsLeft = 60 - now.getSeconds();
 
     const countdown = document.getElementById('countdown');
-    countdown.textContent = `${hoursLeft}:${minutesLeft}:{secondsLeft}`;
+    countdown.textContent = `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
 
     setTimeout(updateCountdown, 1000); // Update every second
 }
