@@ -70,7 +70,7 @@ function updateCountdown() {
     const countdown = document.getElementById('countdown');
     countdown.textContent = `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
 
-    setTimeout(updateCountdown, 1000); // Update every second
+    setTimeout(updateCountdown, 60000); // Update every second
 }
 
 updateCountdown(); // Start countdown
