@@ -65,11 +65,12 @@ function updateCountdown() {
     const now = new Date();
     const hoursLeft = 24 - now.getHours();
     const minutesLeft = 60 - now.getMinutes();
+    const secondsLeft = 60 - now.getSeconds();
 
     const countdown = document.getElementById('countdown');
-    countdown.textContent = `${hoursLeft}:${minutesLeft}`;
+    countdown.textContent = `${hoursLeft}:${minutesLeft}:{secondsLeft}`;
 
-    setTimeout(updateCountdown, 60000); // Update every second
+    setTimeout(updateCountdown, 1000); // Update every second
 }
 
 updateCountdown(); // Start countdown
